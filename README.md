@@ -126,7 +126,6 @@ Why use delegate function to formated? because sometime we need do more complex 
 This repo has many limitation now, as
 - Parse `FIELD TYPE` ONLY
     - Can not gen statements of `Properties` or `Class Methods`.
-- 
 
 ## Quick References
 
@@ -143,7 +142,8 @@ This repo has many limitation now, as
 `Constraint_Default`
 
 ## Feture Work
-- Add more constraint(not null, unique, foreign key ... ).
+- More SQL statement support(`ALTER TABLE`, ... ).
+- More constraint support(`not null`, `unique`, `foreign key`, ... ).
 - Customize gen statement format.
 - Rename field as required.
 - Unit test.
