@@ -5,14 +5,17 @@ This sample code block can help you gen SQL statement (`CREATE TABLE` or `INSERT
 ## Usage
 If has class define like below:
 
+```c#
     public class MyClass {
         public int ID;
         public string StringField;
         public float FloatField;
     }
+```    
     
 We can quick gen it's `CREATE TABLE` statement used:
-    
+
+```c#
     string tableName = "MyClass";
     SQLCreateTableFromClass createTableStatement = new SQLCreateTableFromClass( 
         tableName,
@@ -22,6 +25,7 @@ We can quick gen it's `CREATE TABLE` statement used:
         // add Default Constraint 
         new Constraint_Default( "StringField", "'hello world'" )       
     );
+```
                 
 Then use method: 
     
@@ -29,27 +33,34 @@ Then use method:
     
 Would gen SQL statement:
     
+```sql
     create table MyClass( 
         ID integer primary key,
         StringField text default 'hello world',
         FloatField real
     );
+```
     
 If have instace of MyClass:
 
+```c#
     MyClass myObject = new MyClass();
     myObject.ID = 1;
     myObject.StringField = "hello c_sharp";
     myObject.FloatField = 3.14;
+```
 
 We can use `SQLInsertIntoFromObject` to gen `INSERT INTO` statement:
 
+```c#   
     string tableName = "MyClass";
     SQLInsertIntoFromObject insertIntoStatement = new SQLInsertIntoFromObject( myObject, tableName );
     insertIntoStatement.GenStatement();
+```
 
 Output is:
-    
+   
+```sql   
     insert into MyClass (
         ID,
         StringField,
@@ -59,6 +70,7 @@ Output is:
         'hello c_sharp',
         3.14
     );
+```
     
 ## Customize Type
 If you have any type that not define in system, you can add it to singleton class `MZSQLGen.SQLConfig` that your system/project can use it.
@@ -69,12 +81,18 @@ As example, want to support type `Vector3`(DirectX, Unity ... ) to SQL `text`, w
 
 And set it's value format function:
 
-    SQLConfig.Instance.AddCustomValueFormatFunc( typeof( Vector3 ), (fieldValue, valueString) => {
+```c#
+    SQLConfig.Instance.AddCustomValueFormatFunc( 
+        typeof( Vector3 ),
+        (fieldValue, valueString) => {
             return "'" + valueString + "'";
-    } );
+        } 
+    );
+```
     
 Why use delegate function to formated? because sometime we need do more complex process to our value. as example, we want to store List<Vector2> as text to database, so can add new func to SQLConfig:
-    
+
+```c#    
     SQLConfig.Instance.AddCustomValueFormatFunc( 
         typeof( List<Vector2> ),
         (fieldValue, valueString) => { 
@@ -89,6 +107,7 @@ Why use delegate function to formated? because sometime we need do more complex 
                 return "'" + listString + "'";
         }
     );
+```
     
 ## Support System Type to SQLite3 Type
 - `stirng`  -> `text`
