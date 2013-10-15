@@ -60,7 +60,7 @@ We can use `SQLInsertIntoFromObject` to gen `INSERT INTO` statement:
     insertIntoStatement.GenStatement();
 ```
 
-Output is:
+Output:
    
 ```sql   
     insert into MyClass (
@@ -122,7 +122,7 @@ Why use delegate function to formated? because sometime we need do more complex 
 - `PrimaryKey`
 - `Default`
 
-## LIMITATIONS
+## Limitations
 This repo has many limitation now, as
 - Parse `FIELD TYPE` ONLY
     - Can not gen statements of `Properties` or `Class Methods`.
