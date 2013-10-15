@@ -78,8 +78,10 @@ Output is:
 If you have any type that not define in system, you can add it to singleton class `MZSQLGen.SQLConfig` that your system/project can use it.
 
 As example, want to support type `Vector3`(DirectX, Unity ... ) to SQL `text`, we can:
-    
+
+```c#    
     SQLConfig.Instance.AddCustomTypeToSQLType( typeof( Vector3 ), "text" );
+```    
 
 And set it's value format function:
 
