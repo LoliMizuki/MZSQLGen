@@ -28,8 +28,10 @@ We can quick gen it's `CREATE TABLE` statement used:
 ```
                 
 Then use method: 
-    
+
+```c#    
     createTableStatement.GenStatement();
+```    
     
 Would gen SQL statement:
     
