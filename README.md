@@ -127,8 +127,6 @@ This repo has many limitation now, as
 - Parse `FIELD TYPE` ONLY
     - Can not gen statements of `Properties` or `Class Methods`.
 
-## Quick References
-
 ### interface
 - `ISQLGen`: Define SQLGen implementions.
 - `IConstraint`: Define constraint implementions. 
