@@ -3,7 +3,7 @@
 This sample code block can help you gen SQL statement (`CREATE TABLE` or `INSERT INTO` ... ) from c# classes or instance quickly.
 
 ## Usage
-If has class define like below:
+If has a class define like below:
 
 ```c#
     public class MyClass {
