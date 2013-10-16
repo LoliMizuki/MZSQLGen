@@ -3,7 +3,7 @@
 This sample code block can help you gen SQL statement (`CREATE TABLE` or `INSERT INTO` ... ) from c# classes or instance quickly.
 
 ## Usage
-If has class define like below:
+If has a class define like below:
 
 ```c#
     public class MyClass {
@@ -60,7 +60,7 @@ We can use `SQLInsertIntoFromObject` to gen `INSERT INTO` statement:
     insertIntoStatement.GenStatement();
 ```
 
-Output is:
+Output:
    
 ```sql   
     insert into MyClass (
@@ -122,18 +122,18 @@ Why use delegate function to formated? because sometime we need do more complex 
 - `PrimaryKey`
 - `Default`
 
-## LIMITATIONS
+## Limitations
 This repo has many limitation now, as
 - Parse `FIELD TYPE` ONLY
     - Can not gen statements of `Properties` or `Class Methods`.
 
 ## Quick References
 
-### interface
+### Interface
 - `ISQLGen`: Define SQLGen implementions.
 - `IConstraint`: Define constraint implementions. 
 
-### classes
+### Classes
 `SQLConfig`: Singleton class
 `SQLCreateTableFromClass`
 `SQLInsertIntoFromObject`
