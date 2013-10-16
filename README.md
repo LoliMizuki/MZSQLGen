@@ -129,11 +129,11 @@ This repo has many limitation now, as
 
 ## Quick References
 
-### interface
+### Interface
 - `ISQLGen`: Define SQLGen implementions.
 - `IConstraint`: Define constraint implementions. 
 
-### classes
+### Classes
 `SQLConfig`: Singleton class
 `SQLCreateTableFromClass`
 `SQLInsertIntoFromObject`
