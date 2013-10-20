@@ -2,7 +2,7 @@
 
 This sample code block can help you gen SQL statement (`CREATE TABLE` or `INSERT INTO` ... ) from c# classes or instance quickly.
 
-[toc]
+[TOC]
 
 ## Usage
 If has a class define like below:
