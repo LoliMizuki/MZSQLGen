@@ -136,12 +136,12 @@ This repo has many limitation now, as
 - `IConstraint`: Define constraint implementions. 
 
 ### Classes
-`SQLConfig`: Singleton class
-`SQLCreateTableFromClass`
-`SQLInsertIntoFromObject`
-`Constraint`
-`Constraint_PrimaryKey`
-`Constraint_Default`
+- `SQLConfig`: Singleton class
+- `SQLCreateTableFromClass`
+- `SQLInsertIntoFromObject`
+- `Constraint`
+- `Constraint_PrimaryKey`
+- `Constraint_Default`
 
 ## Feture Work
 - More SQL statement support(`ALTER TABLE`, ... ).
