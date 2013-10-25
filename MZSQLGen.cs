@@ -10,6 +10,7 @@
 // -- rename filed?
 // -- format SQL statement as you like :D
 
+
 using System;
 using System.Reflection;
 using System.Collections.Generic;
@@ -62,19 +63,19 @@ namespace MZSQLGen {
         }
     }
 
-    public class Config {
+    public class SQLConfig {
         public delegate string ValueFormatFunc(object fieldValue ,string valueString);
 
-        static Config _instance = null;
+        static SQLConfig _instance = null;
         Dictionary<Type,string> _defaultSQLTypesByType;
         Dictionary<Type,string> _customSQLTypesByType;
         Dictionary<Type,ValueFormatFunc> _defaultValueFormatFuncsByType;
         Dictionary<Type,ValueFormatFunc> _customValueFormatFuncsByType;
 
-        static public Config Instance {
+        static public SQLConfig Instance {
             get {
                 if( _instance == null ) {
-                    _instance = new Config();
+                    _instance = new SQLConfig();
                 }
 
                 return _instance;
@@ -96,6 +97,10 @@ namespace MZSQLGen {
         public string SQLFormatedValueFromFieldInfo(FieldInfo fieldInfo, object objectHasValue) {
             Type type = fieldInfo.FieldType;
             object fieldValue = fieldInfo.GetValue( objectHasValue );
+            if( fieldValue == null ) {
+                return null;
+            }
+
             string originValueString = fieldInfo.GetValue( objectHasValue ).ToString();
 
             if( _customValueFormatFuncsByType != null && _customValueFormatFuncsByType.ContainsKey( type ) == true ) {
@@ -138,7 +143,7 @@ namespace MZSQLGen {
             _customValueFormatFuncsByType.Add( type, valueFormatFunc );
         }
 
-        Config() {
+        SQLConfig() {
             // SQL Types
             _defaultSQLTypesByType = new Dictionary<Type, string>();
             _defaultSQLTypesByType.Add( typeof( string ), "text" );
@@ -178,7 +183,7 @@ namespace MZSQLGen {
         public string GenStatement() {
             string sqlString = "create table " + _tableName + "( \n";
             foreach( FieldInfo fieldInfo in _classType.GetFields() ) {
-                string fieldTypeString = Config.Instance.SQLTypeStringFromSysType( fieldInfo.FieldType );
+                string fieldTypeString = SQLConfig.Instance.SQLTypeStringFromSysType( fieldInfo.FieldType );
                 if( fieldTypeString == null || fieldTypeString == "" ) {
                     continue;
                 }
@@ -225,7 +230,7 @@ namespace MZSQLGen {
 
             Action<FieldInfo, object> AddFieldStatementToInsertsAndValues = (FieldInfo fieldInfo, object targetObject) => {
                 string fieldName = fieldInfo.Name;
-                string valueString = Config.Instance.SQLFormatedValueFromFieldInfo( fieldInfo, _object );
+                string valueString = SQLConfig.Instance.SQLFormatedValueFromFieldInfo( fieldInfo, _object );
 
                 if( valueString == null || valueString == "" ) {
                     return;
