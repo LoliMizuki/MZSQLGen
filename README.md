@@ -45,7 +45,7 @@ Would gen SQL statement:
     );
 ```
     
-If have instace of MyClass:
+If have instance of MyClass:
 
 ```c#
     MyClass myObject = new MyClass();
@@ -126,7 +126,7 @@ Why use delegate function to formated? because sometime we need do more complex 
 
 ## Limitations
 This repo has many limitation now, as
-- Parse `FIELD TYPE` ONLY
+- Parse `Field Type` ONLY
     - Can not gen statements of `Properties` or `Class Methods`.
 
 ## Quick References
